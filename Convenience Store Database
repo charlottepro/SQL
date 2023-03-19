@@ -1,0 +1,21 @@
+-Create a convenience store database
+
+CREATE TABLE store (id INTEGER PRIMARY KEY, snackname TEXT, price INTEGER, aisle INTEGER, experation_date TEXT);
+
+INSERT INTO store VALUES (1, "good n plenty", 6.50, 4, "10/25/24");
+INSERT INTO store VALUES (3, "coke ina bottle", 3.75, 3, "8/7/24");
+INSERT INTO store VALUES (4, "bottled water", 2.00, 3, "9/17/24");
+INSERT INTO store VALUES (5, "small chips", 4.00, 5,"5/12/24");
+INSERT INTO store VALUES (6, "large chips", 6.00, 5, "6/4/24");
+INSERT INTO store VALUES (7, "energy drink", 3.85, 3, "7/14/24");
+INSERT INTO store VALUES (8, "hot dog", 2.50, 1, "FRESH");
+INSERT INTO store VALUES (9, "hot pickle", 1.80, 1, "FRESH");
+INSERT INTO store VALUES (10, "hot coffee", 3.00, 1, "FRESH");
+INSERT INTO store VALUES (11, "hot chocolate", 2.75, 1, "FRESH");
+INSERT INTO store VALUES (12, "popcorn", 3.00, 5, "FRESH" );
+INSERT INTO store VALUES (13, "gatorade", 3.25, 3, "FRESH");
+INSERT INTO store VALUES (14, "cheetos", 5.00, 5, "FRESH");
+INSERT INTO store VALUES (15, "6-pack beer", 15.00, 2, "FRESH");
+
+-display the database ordered by price
+SELECT * FROM store WHERE price > 21 ORDER BY price DESC;
