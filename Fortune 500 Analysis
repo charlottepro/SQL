@@ -55,3 +55,51 @@ VALUES
     ('Company II', 'Telecommunications', 110.5, 2000, 1, 21, 12, 4.9),
     ('Company JJ', 'Manufacturing', 370.0, 3100, 1, 20, 12, 7.6),
     ('Company KK', 'Healthcare', 150.2, 3400, 0, 16, 8, 5.3);
+
+
+-- Querry 1/5: What are the companies with the best paid time off days and healthcare benefits in the Technology and Energy industry?
+SELECT company_name, industry, paid_time_off_days AS number_of_days, 
+	CASE
+    WHEN paid_time_off_days >= 20 THEN "Impressive"
+    WHEN paid_time_off_days >= 15 THEN "Satisfactory"
+    ELSE "Not acceptable" 
+    END AS paid_time_off
+FROM fortune_companies
+WHERE healthcare_benefits = 1
+AND industry = "Technology" OR industry = "Energy"
+ORDER BY number_of_days DESC;
+
+
+-- Querry 2/5: How many employees do these companies have?
+SELECT company_name, employees,
+	CASE
+    WHEN employees >= 1000000 THEN "Large"
+    WHEN employees >= 10000 THEN "Medium"
+    WHEN employees >= 1 THEN "Small"
+    ELSE "No Staff" 
+    END AS company_size
+FROM fortune_companies
+ORDER BY employees DESC;
+
+
+-- Querry 3/5: What are companies with no healthcare benefits and lowest maternity leave weeks?
+SELECT company_name, maternity_leave_weeks
+FROM fortune_companies
+WHERE healthcare_benefits = 0
+AND maternity_leave_weeks <=9
+ORDER BY maternity_leave_weeks DESC;
+
+
+-- Querry 4/5: Which company has the highest average employee tenure in the technology industry?
+SELECT company_name, industry, MAX(avg_employee_tenure)
+FROM fortune_companies
+WHERE industry = "Technology";
+
+
+-- Querry 5/5: Which companies revenue is at least 350?
+SELECT company_name, revenue
+FROM fortune_companies
+GROUP BY company_name, revenue
+HAVING revenue > 350
+ORDER BY revenue DESC;
+
