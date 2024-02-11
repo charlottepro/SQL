@@ -1,4 +1,4 @@
--- Khan Academy Project: Data Dig
+-- Khan Academy Project: Data Dig: Use advanced SELECT queries to discover things about the data
 
 CREATE TABLE pokemon(
   Number     INTEGER,
