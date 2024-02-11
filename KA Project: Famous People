@@ -1,0 +1,41 @@
+-- In this project, you’re going to make your own table with some small set of “famous people”, then make more tables about things they do and join those to create nice human readable lists.
+
+
+CREATE TABLE singers
+    (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    artist TEXT,
+    age INTEGER,
+    band TEXT, 
+    genre TEXT);
+    
+INSERT INTO singers (artist, age, band, genre) VALUES ("Taylor Swift", 34, "Solo", "Multi-genre");
+INSERT INTO singers (artist, age, band, genre) VALUES ("Phoebe Bridgers", 27, "boygenius", "Alternative/Indie/Rock");
+INSERT INTO singers (artist, age, band, genre) VALUES ("Lucy Dacus", 28, "boygenius", "Alternative/Indie");
+INSERT INTO singers (artist, age, band, genre) VALUES ("Julien Baker", 28, "boygenius", "Alternative/Indie");
+INSERT INTO singers (artist, age, band, genre) VALUES ("Claire Cottrill", 25, "Clairo", "Alternative/Indie");
+INSERT INTO singers (artist, age, band, genre) VALUES ("Mitski", 33, "Solo", "Alternative/Indie");
+
+
+CREATE TABLE song_stats
+    (id INTEGER PRIMARY KEY AUTOINCREMENT,
+    artist_id INTEGER,
+    top_song TEXT,
+    streams INTEGER);
+    
+INSERT INTO song_stats (artist_id, top_song, streams) VALUES (1, "Cruel Summer", 1713000000);
+INSERT INTO song_stats (artist_id, top_song, streams) VALUES (2, "Motion Sickness", 347000000);
+INSERT INTO song_stats (artist_id, top_song, streams) VALUES (3, "Night Shift", 90000000);
+INSERT INTO song_stats (artist_id, top_song, streams) VALUES (4, "Appointments", 260000000);
+INSERT INTO song_stats (artist_id, top_song, streams) VALUES (5, "Sofia", 671000000);
+INSERT INTO song_stats (artist_id, top_song, streams) VALUES (6, "Washing Machine Heart", 652000000);
+
+
+SELECT *
+FROM singers
+JOIN song_stats
+ON singers.id = song_stats.artist_id;
+    
+    
+    
+
+
