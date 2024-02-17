@@ -15,6 +15,47 @@ CREATE TABLE pokemon(
   Generation INTEGER,
   Legendary  TEXT
 );
+
+
+
+
+SELECT *
+FROM pokemon;
+
+
+-- Querry 1: Select all Pokemon stats for grass and poison types and sort their strength levels. 
+
+SELECT *,
+CASE
+    WHEN Attack > 100 THEN "Extreme"
+    WHEN Attack > 50 THEN "Strong"
+    WHEN Attack >1 THEN "Weak"
+    ELSE "None"
+    END AS Attack_level
+FROM pokemon
+WHERE type_1 = "Grass" AND type_2 = "Poison"
+ORDER BY Attack DESC;
+
+
+-- Querry 2: Which Pokemons totals are above 600?
+
+SELECT MAX(total), *
+FROM pokemon
+GROUP BY total
+HAVING MAX(total) > 600;
+
+
+-- Querry 3: Show which pokemon speed are at least 100.
+
+SELECT AVG(Speed), *
+FROM pokemon
+GROUP BY speed 
+HAVING AVG(Speed) > 100; 
+
+
+
+
+
 INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_Def,Speed,Generation,Legendary) VALUES (1,'Bulbasaur','Grass','Poison',318,45,49,49,65,65,45,1,'False');
 INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_Def,Speed,Generation,Legendary) VALUES (2,'Ivysaur','Grass','Poison',405,60,62,63,80,80,60,1,'False');
 INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_Def,Speed,Generation,Legendary) VALUES (3,'Venusaur','Grass','Poison',525,80,82,83,100,100,80,1,'False');
@@ -816,38 +857,4 @@ INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_
 INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_Def,Speed,Generation,Legendary) VALUES (720,'HoopaHoopa Unbound','Psychic','Dark',680,80,160,60,170,130,80,6,'True');
 INSERT INTO pokemon(Number,Name,Type_1,Type_2,Total,HP,Attack,Defense,Sp_Atk,Sp_Def,Speed,Generation,Legendary) VALUES (721,'Volcanion','Fire','Water',600,80,110,120,130,90,70,6,'True');
 
-
-
-SELECT *
-FROM pokemon;
-
-
--- Querry 1: Select all Pokemon stats for grass and poison types and sort their strength levels. 
-
-SELECT *,
-CASE
-    WHEN Attack > 100 THEN "Extreme"
-    WHEN Attack > 50 THEN "Strong"
-    WHEN Attack >1 THEN "Weak"
-    ELSE "None"
-    END AS Attack_level
-FROM pokemon
-WHERE type_1 = "Grass" AND type_2 = "Poison"
-ORDER BY Attack DESC;
-
-
--- Querry 2: Which Pokemons totals are above 600?
-
-SELECT MAX(total), *
-FROM pokemon
-GROUP BY total
-HAVING MAX(total) > 600;
-
-
--- Querry 3: Show which pokemon speed are at least 100.
-
-SELECT AVG(Speed), *
-FROM pokemon
-GROUP BY speed 
-HAVING AVG(Speed) > 100; 
 
