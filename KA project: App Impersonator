@@ -1,0 +1,65 @@
+--Khan Academy Project - App impersonator: Think about your favorite apps, and pick one that stores your data- like a game that stores scores, an app that lets you post updates, etc. 
+--Now in this project, you're going to imagine that the app stores your data in a SQL database (which is pretty likely!), and write SQL statements that might look like their own SQL.
+
+--CREATE a table to store the data.
+--INSERT a few example rows in the table.
+--Use an UPDATE to emulate what happens when you edit data in the app.
+--Use a DELETE to emulate what happens when you delete data in the app.
+
+CREATE TABLE dvd_collection 
+(id INTEGER PRIMARY KEY AUTOINCREMENT,
+title TEXT,
+director TEXT,
+release_date TEXT,
+years_since_release INTEGER
+);
+
+INSERT INTO dvd_collection (title, director, release_date, years_since_release) VALUES ("High School Musical", "Kenny Ortega", "January 20th, 2006", 18);
+INSERT INTO dvd_collection (title, director, release_date, years_since_release) VALUES ("High School Musical 2", "Kenny Ortega", "August 17th, 2007", 16);
+INSERT INTO dvd_collection (title, director, release_date, years_since_release) VALUES ("High School Musical 3: Senior Year", "Kenny Ortega", "October 24th, 2008", 15);
+INSERT INTO dvd_collection (title, director, release_date, years_since_release) VALUES ("Lilo & Stitch", "Chris Sanders & Dean DeBlois", "June 16th, 2002", 22);
+INSERT INTO dvd_collection (title, director, release_date, years_since_release) VALUES ("The Incredibles", "Big Bird","October 24th, 2004", 19);
+INSERT INTO dvd_collection (title, director, release_date, years_since_release) VALUES ("Tangled", "Nathan Greno & Byron Howard", "November 24th, 2010", 13);
+INSERT INTO dvd_collection (title, director, release_date, years_since_release) VALUES ("Lion King", "Rob Minkoff", "June 24th, 1994", 30);
+INSERT INTO dvd_collection (title, director, release_date, years_since_release) VALUES ("Chicken Little", "Mark Dindal", "October 30th, 2005", 18);
+INSERT INTO dvd_collection (title, director, release_date, years_since_release) VALUES ("Shark Tale", "Rob Letterman, Vicky Jenson, Bibo Bergeron", "October 1st, 2004", 19);
+INSERT INTO dvd_collection (title, director, release_date, years_since_release) VALUES ("Space Chimps", "Kirk Demarco", "July 17th, 2008", 16);
+INSERT INTO dvd_collection (title, director, release_date, years_since_release) VALUES ("Wall-E", "Andrew Stanton", "June 27th, 2008", 16);
+INSERT INTO dvd_collection (title, director, release_date, years_since_release) VALUES ("Wreck-It Ralph", "Rich Moore", "November 2nd, 2012", 11);
+
+
+
+SELECT * FROM dvd_collection;
+
+
+UPDATE dvd_collection SET director = "Rob Minkoff & Roger Allers" WHERE title = "Lion King";
+SELECT * FROM dvd_collection;
+
+
+UPDATE dvd_collection SET director = "Brad Bird" WHERE title = "The Incredibles";
+SELECT * FROM dvd_collection;
+
+
+UPDATE dvd_collection SET years_since_release = 16 WHERE title = "High School Musical 2";
+SELECT * FROM dvd_collection;
+
+
+DELETE FROM dvd_collection
+WHERE title LIKE "High School Musical%";
+SELECT * FROM dvd_collection;
+
+DELETE FROM dvd_collection
+WHERE years_since_release > 16;
+SELECT * FROM dvd_collection;
+
+
+
+
+
+
+
+
+
+
+
+
