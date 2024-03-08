@@ -28,4 +28,45 @@ time_signature integer NOT NULL
 
 --I surveyed the table with the following SQL querries.
 
- 
+
+ SELECT *
+FROM BIT_DB.Spotifydata;
+
+
+--Most popular on Spotify by artist and track.
+SELECT artist_name AS artist, track_name AS track, popularity 
+FROM BIT_DB.Spotifydata
+WHERE popularity >= 90
+ORDER BY popularity DESC;
+
+
+--Average populatity danceability, and energy by artist and track.
+SELECT artist_name AS artist, track_name AS track, avg(popularity), avg(danceability), avg(energy)
+FROM BIT_DB.Spotifydata
+GROUP BY artist, track;
+
+
+--Which is the slowest and longest song?
+SELECT artist_name AS artist, track_name AS track, tempo, duration_ms AS duration
+FROM BIT_DB.Spotifydata
+WHERE duration > 200000 AND tempo < 100  LIMIT 1 ; 
+
+
+--Which is the fastest and shortest song?
+SELECT artist_name AS artist, track_name AS track, tempo, duration_ms AS duration
+FROM BIT_DB.Spotifydata
+ORDER BY duration < 140000 AND tempo > 130 LIMIT 1;
+
+
+--Common table expressions
+
+WITH popularity_average_CTE AS (
+SELECT s.artist_name, AVG(s.popularity) AS average_popularity
+FROM SpotifyData s
+GROUP BY s.artist_name
+)
+
+SELECT artist_name, average_popularity, 'Top Star' AS tag
+FROM popularity_average_CTE 
+WHERE average_popularity >= 90;
+
